@@ -1,5 +1,7 @@
+import { readFileSync } from "fs";
 import assert from "node:assert";
 import test, { describe, it } from "node:test";
+import path from "path";
 import solution, { getCommonItem } from "./3";
 import { Item } from "./item";
 
@@ -43,4 +45,14 @@ test("part 1 test input", () => {
 
 test("part 2 test input", () => {
   assert.strictEqual(solution.two(solution.parse(testInput)), 70);
+});
+
+const realInput = readFileSync(path.join(__dirname, "input.txt")).toString();
+
+test("part 1 real input is correct", () => {
+  assert.strictEqual(solution.one(solution.parse(realInput)), 8515);
+});
+
+test("part 2 real input is correct", () => {
+  assert.strictEqual(solution.two(solution.parse(realInput)), 2434);
 });
