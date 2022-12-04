@@ -9,7 +9,7 @@ if (!isNaN(parsed) && 0 < parsed && parsed <= 25) {
 
   const testProcess = spawnSync(
     "node",
-    ["--loader", "ts-node/esm.mjs", "--test", testFile],
+    ["--no-warnings", "--loader", "ts-node/esm.mjs", "--test", testFile],
     { encoding: "utf8" }
   );
 

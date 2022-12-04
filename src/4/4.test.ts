@@ -9,19 +9,19 @@ const sampleInput = readFileSync(
 ).toString();
 
 test("part 1 sample input", () => {
-  assert.strictEqual(solution.one(solution.parse(sampleInput)), 157);
+  assert.strictEqual(solution.one(solution.parse(sampleInput)), 2);
 });
 
-// test("part 2 sample input", () => {
-//   assert.strictEqual(solution.two(solution.parse(sampleInput)), 70);
-// });
+test("part 2 sample input", () => {
+  assert.strictEqual(solution.two(solution.parse(sampleInput)), 4);
+});
 
-// const realInput = readFileSync(path.join(__dirname, "input.txt")).toString();
+const realInput = readFileSync(path.join(__dirname, "input.txt")).toString();
 
-// test("part 1 real input is correct", () => {
-//   assert.strictEqual(solution.one(solution.parse(realInput)), 8515);
-// });
+test("part 1 real input is correct", () => {
+  assert.strictEqual(solution.one(solution.parse(realInput)), 507);
+});
 
-// test("part 2 real input is correct", () => {
-//   assert.strictEqual(solution.two(solution.parse(realInput)), 2434);
-// });
+test("part 2 real input is correct", () => {
+  assert.strictEqual(solution.two(solution.parse(realInput)), 897);
+});
