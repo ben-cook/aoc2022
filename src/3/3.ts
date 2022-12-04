@@ -1,7 +1,24 @@
 import { array_chunk } from "../lib/chunkIterator";
 import { Solution } from "../solution";
-import { Group } from "./group";
-import { Rucksack } from "./rucksack";
+import { Item } from "./item";
+
+export const getCommonItem = (items: string): Item | undefined => {
+  let commonItem;
+  const seen = new Set();
+
+  for (const character of items.slice(0, items.length / 2)) {
+    seen.add(character);
+  }
+
+  for (const character of items.slice(items.length / 2)) {
+    if (seen.has(character)) {
+      commonItem = new Item(character);
+      break;
+    }
+  }
+
+  return commonItem;
+};
 
 const solution: Solution<string[]> = {
   parse(input: string) {
@@ -10,15 +27,24 @@ const solution: Solution<string[]> = {
 
   one(input: string[]) {
     return input
-      .map((line) => new Rucksack(line))
-      .reduce((acc, cur) => acc + (cur.commonItem?.priority ?? 0), 0);
+      .flatMap((items) => {
+        const commonItem = getCommonItem(items);
+        return commonItem ? [commonItem] : [];
+      })
+      .reduce((acc, cur) => acc + cur.priority, 0);
   },
 
   two(input: string[]) {
     return Array.from(array_chunk(input, 3, false))
       .map((triple) => {
-        const group = new Group(triple);
-        return group.commonItem.priority;
+        const [one, two, three] = triple;
+
+        const commonItem = new Item(
+          [...one.split("")]
+            .filter((char) => two.includes(char))
+            .filter((char) => three.includes(char))[0]
+        );
+        return commonItem.priority;
       })
       .reduce((a, b) => a + b);
   },
