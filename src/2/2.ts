@@ -1,3 +1,4 @@
+import "../lib/filterMap";
 import { Solution } from "../solution";
 
 export enum Choice {
@@ -78,22 +79,22 @@ const solution: Solution<string[]> = {
 
   one(input: string[]) {
     return input
-      .flatMap((line) => {
+      .filterMap<string, Round>((line) => {
         const opponent = line.at(0);
-        if (!opponent) return [];
+        if (!opponent) return;
         const you = line.at(-1);
-        if (!you) return [];
+        if (!you) return;
 
         const opponentChoice = parseChoice(opponent);
         const youChoice = parseChoice(you);
-        if (!opponentChoice || !youChoice) return [];
+        if (!opponentChoice || !youChoice) return;
 
         const round: Round = {
           opponent: opponentChoice,
           you: youChoice,
         };
 
-        return [round];
+        return round;
       })
       .map(scoreRound)
       .reduce((a, b) => a + b);
