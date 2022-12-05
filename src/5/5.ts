@@ -1,3 +1,4 @@
+import "../lib";
 import { Solution } from "../solution";
 
 class CrateStacker {
@@ -42,7 +43,7 @@ class CrateStacker {
   public getTops(): string {
     const out = [];
     for (let i = 1; i < this.stacks.length; i++) {
-      out.push(this.stacks[i].at(-1));
+      out.push(this.stacks[i].peek());
     }
     return out.join("");
   }

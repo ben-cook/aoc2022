@@ -1,3 +1,4 @@
+import "../lib";
 import { Solution } from "../solution";
 
 const solution: Solution<string[]> = {
