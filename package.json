@@ -8,7 +8,8 @@
     "node": ">=19"
   },
   "scripts": {
-    "time": "ts-node src/main.ts",
+    "dev": "ts-node src/main.ts",
+    "time": "ts-node src/time.ts",
     "test": "ts-node src/testRunner.ts"
   },
   "devDependencies": {

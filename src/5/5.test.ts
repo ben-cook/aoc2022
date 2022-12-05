@@ -8,20 +8,20 @@ const sampleInput = readFileSync(
   path.join(__dirname, "sample_input.txt")
 ).toString();
 
-test("part 1 sample input", () => {
+test("part 1 sample input is CMZ", () => {
   assert.strictEqual(solution.one(solution.parse(sampleInput)), "CMZ");
 });
 
-test("part 2 sample input", () => {
+test("part 2 sample input is MCD", () => {
   assert.strictEqual(solution.two(solution.parse(sampleInput)), "MCD");
 });
 
 const realInput = readFileSync(path.join(__dirname, "input.txt")).toString();
 
-test("part 1 real input is correct", () => {
+test("part 1 real input is TWSGQHNHL", () => {
   assert.strictEqual(solution.one(solution.parse(realInput)), "TWSGQHNHL");
 });
 
-test("part 2 real input is correct", () => {
+test("part 2 real input is JNRSCDWPP", () => {
   assert.strictEqual(solution.two(solution.parse(realInput)), "JNRSCDWPP");
 });
