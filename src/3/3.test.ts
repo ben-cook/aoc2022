@@ -4,8 +4,9 @@ import path from "path";
 import solution from "./3";
 import { Item } from "./item";
 
-const testInput =
-  "vJrwpWtwJgWrhcsFMMfFFhFp\njqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\nPmmdzqPrVvPwwTWBwg\nwMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\nttgJtRGJQctTZtZT\nCrZsJsPPZsGzwwsLwLmpwMDw";
+const testInput = readFileSync(
+  path.join(import.meta.dir, "sample_input.txt")
+).toString();
 
 test("priorities", () => {
   it("a should have priority 1", () => {

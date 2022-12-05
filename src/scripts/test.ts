@@ -7,6 +7,7 @@ const parsed = parseInt(arg, 10);
 if (!isNaN(parsed) && 0 < parsed && parsed <= 25) {
   const testFile = path.join(
     import.meta.dir,
+    "..",
     parsed.toString(),
     `${parsed}.test.ts`
   );

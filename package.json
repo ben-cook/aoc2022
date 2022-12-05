@@ -8,9 +8,10 @@
     "node": ">=19"
   },
   "scripts": {
-    "dev": "bun src/main.ts",
-    "time": "bun src/time.ts",
-    "test": "bun src/testRunner.ts"
+    "dev": "bun src/scripts/dev.ts",
+    "sample": "bun src/scripts/sample.ts",
+    "time": "bun src/scripts/time.ts",
+    "test": "bun src/scripts/test.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",

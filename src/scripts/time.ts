@@ -1,5 +1,5 @@
-import { init } from "./runner";
-import { Solution } from "./solution";
+import { Solution } from "../solution";
+import { init } from "./utils";
 
 const arg = process.argv[2];
 const parsed = parseInt(arg, 10);
