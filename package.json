@@ -8,9 +8,9 @@
     "node": ">=19"
   },
   "scripts": {
-    "dev": "ts-node src/main.ts",
-    "time": "ts-node src/time.ts",
-    "test": "ts-node src/testRunner.ts"
+    "dev": "bun src/main.ts",
+    "time": "bun src/time.ts",
+    "test": "bun src/testRunner.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.10",
@@ -30,5 +30,8 @@
       "@typescript-eslint"
     ],
     "root": true
+  },
+  "dependencies": {
+    "bun-types": "^0.2.2"
   }
 }

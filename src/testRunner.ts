@@ -1,19 +1,20 @@
-import { spawnSync } from "node:child_process";
+import { spawnSync } from "bun";
 import path from "path";
 
 const arg = process.argv[2];
 const parsed = parseInt(arg, 10);
 
 if (!isNaN(parsed) && 0 < parsed && parsed <= 25) {
-  const testFile = path.join(__dirname, parsed.toString(), `${parsed}.test.ts`);
-
-  const testProcess = spawnSync(
-    "node",
-    ["--no-warnings", "--loader", "ts-node/esm.mjs", "--test", testFile],
-    { encoding: "utf8" }
+  const testFile = path.join(
+    import.meta.dir,
+    parsed.toString(),
+    `${parsed}.test.ts`
   );
 
-  console.log(testProcess.stdout);
+  const { stdout, stderr } = spawnSync({ cmd: ["bun", "wiptest", testFile] });
+
+  console.log(stdout?.toString());
+  console.log(stderr?.toString());
 } else {
   console.log(`Unknown argument "${arg}": please input a number (1-25)`);
 }

@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
+    "types": ["bun-types"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

@@ -7,20 +7,9 @@ const parsed = parseInt(arg, 10);
 const run = async (day: number) => {
   const { input, solution } = await init(day);
   if (!input || !solution) return;
+
   timeSolution({ input, solution, day });
 };
-
-if (!isNaN(parsed) && 0 < parsed && parsed <= 25) {
-  run(parsed);
-} else if (arg === "all") {
-  for (let i = 1; i <= 25; i++) {
-    run(i);
-  }
-} else {
-  console.log(
-    `Unknown argument "${arg}": please input a number (1-25) or 'all'`
-  );
-}
 
 interface TimeSolutionArgs<T> {
   input: string;
@@ -72,3 +61,19 @@ const timePart = <T>({ input, fn, part, retries = 10 }: TimePartArgs<T>) => {
     console.error(err);
   }
 };
+
+const main = async () => {
+  if (!isNaN(parsed) && 0 < parsed && parsed <= 25) {
+    run(parsed);
+  } else if (arg === "all") {
+    for (let i = 1; i <= 25; i++) {
+      await run(i);
+    }
+  } else {
+    console.log(
+      `Unknown argument "${arg}": please input a number (1-25) or 'all'`
+    );
+  }
+};
+
+main();
