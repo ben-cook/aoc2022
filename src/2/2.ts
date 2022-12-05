@@ -1,4 +1,4 @@
-import "../lib/filterMap";
+import "../lib";
 import { Solution } from "../solution";
 
 export enum Choice {
@@ -79,7 +79,7 @@ const solution: Solution<string[]> = {
 
   one(input: string[]) {
     return input
-      .filterMap<string, Round>((line) => {
+      .filterMap<Round>((line) => {
         const opponent = line.at(0);
         if (!opponent) return;
         const you = line.at(-1);
@@ -102,15 +102,15 @@ const solution: Solution<string[]> = {
 
   two(input: string[]) {
     return input
-      .flatMap((line) => {
+      .filterMap((line) => {
         const opponent = line.at(0);
-        if (!opponent) return [];
+        if (!opponent) return;
         const outcomeRaw = line.at(-1);
-        if (!outcomeRaw) return [];
+        if (!outcomeRaw) return;
 
         const opponentChoice = parseChoice(opponent);
         const outcome = parseOutcome(outcomeRaw);
-        if (opponentChoice === undefined || outcome === undefined) return [];
+        if (opponentChoice === undefined || outcome === undefined) return;
 
         let youChoice;
         switch (outcome) {
@@ -138,7 +138,7 @@ const solution: Solution<string[]> = {
           you: youChoice || Choice.Paper,
         };
 
-        return [round];
+        return round;
       })
       .map(scoreRound)
       .reduce((a, b) => a + b);

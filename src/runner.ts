@@ -26,10 +26,10 @@ const timeSolution = <T>({
   input,
   fn,
   part,
-  retries = 10,
+  retries = 1,
 }: {
   input: T;
-  fn: (input: T) => number;
+  fn: (input: T) => number | string;
   part: number;
   retries?: number;
 }) => {
@@ -44,7 +44,7 @@ const timeSolution = <T>({
     }
     const averageTime = totalTime / retries;
     const answer = fn(input);
-    const formattedAnswer = String(answer).padEnd(8);
+    const formattedAnswer = String(answer).padEnd(10);
 
     console.log(
       ` Part ${part}: ${formattedAnswer} (${averageTime.toFixed(

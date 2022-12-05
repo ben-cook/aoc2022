@@ -1,4 +1,4 @@
-import { array_chunk } from "../lib/chunkIterator";
+import "../lib";
 import { Solution } from "../solution";
 import { Item } from "./item";
 
@@ -27,15 +27,15 @@ const solution: Solution<string[]> = {
 
   one(input: string[]) {
     return input
-      .flatMap((items) => {
+      .filterMap<Item>((items) => {
         const commonItem = getCommonItem(items);
-        return commonItem ? [commonItem] : [];
+        return commonItem;
       })
       .reduce((acc, cur) => acc + cur.priority, 0);
   },
 
   two(input: string[]) {
-    return Array.from(array_chunk(input, 3, false))
+    return [...input.chunk(3, false)]
       .map((triple) => {
         const [one, two, three] = triple;
 

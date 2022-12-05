@@ -1,9 +1,6 @@
-export {};
-
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Array<T> {
-    filterMap<T, R>(f: (input: T) => R | undefined): R[];
+    filterMap<R>(f: (input: T) => R | undefined): R[];
   }
 }
 
@@ -15,3 +12,5 @@ Object.defineProperty(Array.prototype, "filterMap", {
     });
   },
 });
+
+export {};
