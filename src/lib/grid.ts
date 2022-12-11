@@ -13,6 +13,16 @@ export class Grid<T> {
     this.inner = data;
   }
 
+  /** Return the column at `index` */
+  public col(index: number): T[] {
+    return this.inner.map((row) => row[index]);
+  }
+
+  /** Return the row at `index` */
+  public row(index: number): T[] {
+    return this.inner[index];
+  }
+
   private offsetToValue(
     { x, y }: Point,
     { x: offsetX, y: offsetY }: Point

@@ -30,7 +30,15 @@
     "plugins": [
       "@typescript-eslint"
     ],
-    "root": true
+    "root": true,
+    "rules": {
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "ignoreRestSiblings": true
+        }
+      ]
+    }
   },
   "dependencies": {
     "bun-types": "^0.2.2"
